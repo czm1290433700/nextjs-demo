@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import styles from "./index.module.scss";
 
 interface IProps {
@@ -15,15 +14,6 @@ interface IProps {
 const Home: NextPage<IProps> = ({ title, description, list }) => {
   return (
     <div className={styles.container}>
-      <Head>
-        <title>A Demo for 《深入浅出SSR官网开发指南》</title>
-        <meta
-          name="description"
-          content="A Demo for 《深入浅出SSR官网开发指南》"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <main className={styles.main}>
         <h1 className={styles.title}>{title}</h1>
 
