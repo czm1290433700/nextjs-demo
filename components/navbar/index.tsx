@@ -8,7 +8,9 @@ export interface INavBarProps {}
 export const NavBar: FC<INavBarProps> = ({}) => {
   return (
     <div className={styles.navBar}>
-      <Image src={logoLight} alt="Demo" width={70} height={20} />
+      <a href="http://localhost:3000/">
+        <Image src={logoLight} alt="Demo" width={70} height={20} />
+      </a>
     </div>
   );
 };

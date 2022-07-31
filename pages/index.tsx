@@ -32,10 +32,20 @@ const Home: NextPage<IProps> = ({ title, description, list }) => {
         <div className={styles.grid}>
           {list?.map((item, index) => {
             return (
-              <a key={index} href={item.link} className={styles.card}>
+              <div
+                key={index}
+                className={styles.card}
+                onClick={(): void => {
+                  window.open(
+                    item.link,
+                    "blank",
+                    "noopener=yes,noreferrer=yes"
+                  );
+                }}
+              >
                 <h2>{item.label} &rarr;</h2>
                 <p>{item.info}</p>
-              </a>
+              </div>
             );
           })}
         </div>
