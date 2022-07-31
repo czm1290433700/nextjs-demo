@@ -1,0 +1,85 @@
+.footer {
+  padding: 70px 145px;
+  background-color: #f4f5f5;
+  .topArea {
+    display: flex;
+    justify-content: space-between;
+
+    .footerTitle {
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 36px;
+      color: #333333;
+      margin: 0;
+    }
+
+    .linkListArea {
+      display: flex;
+      .linkArea {
+        display: flex;
+        flex-direction: column;
+        margin-left: 160px;
+        .title {
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 20px;
+          color: #333333;
+          margin-bottom: 40px;
+        }
+
+        .links {
+          display: flex;
+          flex-direction: column;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 20px;
+
+          .link {
+            color: #333333;
+            cursor: pointer;
+            margin-bottom: 24px;
+          }
+
+          .disabled {
+            color: #666;
+            cursor: not-allowed;
+            margin-bottom: 24px;
+          }
+        }
+      }
+    }
+  }
+
+  .bottomArea {
+    display: flex;
+    justify-content: space-between;
+    .codeArea {
+      display: flex;
+      flex-direction: column;
+      .text {
+        color: #666;
+      }
+    }
+    .numArea {
+      color: #666;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+
+      span {
+        margin-bottom: 12px;
+      }
+
+      .publicLogo {
+        display: flex;
+
+        .logo {
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+}
