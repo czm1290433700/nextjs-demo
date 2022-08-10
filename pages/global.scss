@@ -1,0 +1,38 @@
+html[data-theme="dark"] {
+  --primary-color: #ffffff;
+  --primary-background-color: rgba(14, 14, 14, 1);
+  --footer-background-color: rgba(36, 36, 36, 1);
+  --navbar-background-color: rgba(0, 0, 0, 0.5);
+  --secondary-color: rgba(255, 255, 255, 0.5);
+  --link-color: #34a8eb;
+  --navbar-icon: url("../public/logo_dark.png");
+  --theme-icon: url("../public/theme_dark.png");
+}
+
+html[data-theme="light"] {
+  --primary-color: #333333;
+  --primary-background-color: rgba(255, 255, 255, 1);
+  --footer-background-color: #f4f5f5;
+  --navbar-background-color: rgba(255, 255, 255, 0.5);
+  --secondary-color: #666666;
+  --link-color: #0070f3;
+  --navbar-icon: url("../public/logo_light.png");
+  --theme-icon: url("../public/theme_light.png");
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
