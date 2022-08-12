@@ -6,7 +6,7 @@ import { Themes } from "@/constants/enum";
 export interface INavBarProps {}
 
 export const NavBar: FC<INavBarProps> = ({}) => {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { setTheme } = useContext(ThemeContext);
 
   return (
     <div className={styles.navBar}>
@@ -16,7 +16,7 @@ export const NavBar: FC<INavBarProps> = ({}) => {
       <div
         className={styles.theme_icon}
         onClick={(): void => {
-          if (theme === Themes.light) {
+          if (localStorage.getItem("theme") === Themes.light) {
             setTheme(Themes.dark);
           } else {
             setTheme(Themes.light);
