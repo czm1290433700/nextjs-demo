@@ -4,6 +4,9 @@
 
 ## 项目启动
 
+1. fork cms 数据层仓库 https://github.com/czm1290433700/nextjs-cms 参照对应 readme 启动
+2. nextjs-demo 启动
+
 ```
 npm install
 npm run dev

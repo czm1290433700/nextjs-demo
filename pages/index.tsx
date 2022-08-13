@@ -1,5 +1,8 @@
 import type { NextPage } from "next";
 import styles from "./index.module.scss";
+import cName from "classnames";
+import { useContext, useEffect, useRef, useState } from "react";
+import { ThemeContext } from "@/stores/theme";
 
 interface IProps {
   title: string;
@@ -12,9 +15,24 @@ interface IProps {
 }
 
 const Home: NextPage<IProps> = ({ title, description, list }) => {
+  const mainRef = useRef<HTMLDivElement>(null);
+  const { theme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    mainRef.current?.classList.remove(styles.withAnimation);
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        mainRef.current?.classList.add(styles.withAnimation);
+      });
+    });
+  }, [theme]);
+
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
+      <main
+        className={cName([styles.main, styles.withAnimation])}
+        ref={mainRef}
+      >
         <h1 className={styles.title}>{title}</h1>
 
         <p className={styles.description}>{description}</p>
@@ -47,7 +65,7 @@ const Home: NextPage<IProps> = ({ title, description, list }) => {
 Home.getInitialProps = (context) => {
   return {
     title: "Hello SSR!",
-    description: "A Demo for 《深入浅出SSR官网开发指南》",
+    description: "A Demo for 《官网开发：SSR 应用实战指南》",
     list: [
       {
         label: "文章1",

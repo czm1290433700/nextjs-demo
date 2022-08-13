@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import styles from "./styles.module.scss";
 
 interface IProps {
   articleId: number;
@@ -6,7 +7,7 @@ interface IProps {
 
 const Article: NextPage<IProps> = ({ articleId }) => {
   return (
-    <div>
+    <div className={styles.article}>
       <h1>文章{articleId}</h1>
     </div>
   );

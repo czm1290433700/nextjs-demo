@@ -1,14 +1,32 @@
 .navBar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: hsla(0,0%,100%,.5);
-    backdrop-filter: blur(8px);
-    width: 100%;
-    height: 64px;
-    position: sticky;
-    top: 0;
-    left: 0;
-    padding: 20px 32px;
-    z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--navbar-background-color);
+  backdrop-filter: blur(8px);
+  width: 100%;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 20px 32px;
+  z-index: 100;
+  box-sizing: border-box;
+
+  .logo_icon {
+    width: 70px;
+    height: 20px;
+    background-image: var(--navbar-icon);
+    background-size: 70px 20px;
+    background-repeat: no-repeat;
+  }
+
+  .theme_icon {
+    width: 20px;
+    height: 20px;
+    background-image: var(--theme-icon);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
 }
