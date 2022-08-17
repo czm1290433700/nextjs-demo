@@ -25,9 +25,7 @@ const Home: NextPage<IProps> = ({ title, description, articles }) => {
   useEffect(() => {
     mainRef.current?.classList.remove(styles.withAnimation);
     window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(() => {
-        mainRef.current?.classList.add(styles.withAnimation);
-      });
+      mainRef.current?.classList.add(styles.withAnimation);
     });
   }, [theme]);
 
