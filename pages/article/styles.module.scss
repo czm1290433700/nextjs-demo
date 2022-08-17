@@ -1,3 +1,37 @@
 .article {
   color: var(--primary-color);
+  width: 50rem;
+  margin: auto;
+
+  .title {
+    margin-bottom: 1rem;
+  }
+
+  .info {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--secondary-color);
+    opacity: 0.6;
+    margin-bottom: 2.5rem;
+  }
+
+  .description {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--secondary-color);
+    padding-left: 1.25rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .description::before {
+    content: "";
+    width: 0.25rem;
+    height: 1.25rem;
+    background-color: var(--secondary-color);
+    opacity: 0.2;
+    position: absolute;
+    left: 0;
+    bottom: -0.125rem;
+  }
 }

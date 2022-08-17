@@ -14,12 +14,12 @@ const MyApp = (data: AppProps & ILayoutProps & { isMobile: boolean }) => {
   return (
     <div>
       <Head>
-        <title>{`A Demo for 《深入浅出SSR官网开发指南》(${
+        <title>{`A Demo for 《SSR 实战：官网开发指南》(${
           isMobile ? "移动端" : "pc端"
         })`}</title>
         <meta
           name="description"
-          content={`A Demo for 《深入浅出SSR官网开发指南》(${
+          content={`A Demo for 《SSR 实战：官网开发指南》(${
             isMobile ? "移动端" : "pc端"
           })`}
         />

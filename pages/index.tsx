@@ -3,18 +3,22 @@ import styles from "./index.module.scss";
 import cName from "classnames";
 import { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from "@/stores/theme";
+// import { Pagination } from "@douyinfe/semi-ui";
 
 interface IProps {
   title: string;
   description: string;
-  list: {
-    label: string;
-    info: string;
-    link: string;
-  }[];
+  articles: {
+    list: {
+      label: string;
+      info: string;
+      link: string;
+    }[];
+    total: number;
+  };
 }
 
-const Home: NextPage<IProps> = ({ title, description, list }) => {
+const Home: NextPage<IProps> = ({ title, description, articles }) => {
   const mainRef = useRef<HTMLDivElement>(null);
   const { theme } = useContext(ThemeContext);
 
@@ -38,7 +42,7 @@ const Home: NextPage<IProps> = ({ title, description, list }) => {
         <p className={styles.description}>{description}</p>
 
         <div className={styles.grid}>
-          {list?.map((item, index) => {
+          {articles?.list?.map((item, index) => {
             return (
               <div
                 key={index}
@@ -56,6 +60,7 @@ const Home: NextPage<IProps> = ({ title, description, list }) => {
               </div>
             );
           })}
+          {/* <Pagination total={articles?.total} pageSize={6} /> */}
         </div>
       </main>
     </div>
@@ -65,39 +70,42 @@ const Home: NextPage<IProps> = ({ title, description, list }) => {
 Home.getInitialProps = (context) => {
   return {
     title: "Hello SSR!",
-    description: "A Demo for 《官网开发：SSR 应用实战指南》",
-    list: [
-      {
-        label: "文章1",
-        info: "A test for article1",
-        link: "http://localhost:3000/article/1",
-      },
-      {
-        label: "文章2",
-        info: "A test for article2",
-        link: "http://localhost:3000/article/2",
-      },
-      {
-        label: "文章3",
-        info: "A test for article3",
-        link: "http://localhost:3000/article/3",
-      },
-      {
-        label: "文章4",
-        info: "A test for article4",
-        link: "http://localhost:3000/article/4",
-      },
-      {
-        label: "文章5",
-        info: "A test for article5",
-        link: "http://localhost:3000/article/5",
-      },
-      {
-        label: "文章6",
-        info: "A test for article6",
-        link: "http://localhost:3000/article/6",
-      },
-    ],
+    description: "A Demo for 《SSR 实战：官网开发指南》",
+    articles: {
+      list: [
+        {
+          label: "文章1",
+          info: "A test for article1",
+          link: "http://localhost:3000/article/1",
+        },
+        {
+          label: "文章2",
+          info: "A test for article2",
+          link: "http://localhost:3000/article/2",
+        },
+        {
+          label: "文章3",
+          info: "A test for article3",
+          link: "http://localhost:3000/article/3",
+        },
+        {
+          label: "文章4",
+          info: "A test for article4",
+          link: "http://localhost:3000/article/4",
+        },
+        {
+          label: "文章5",
+          info: "A test for article5",
+          link: "http://localhost:3000/article/5",
+        },
+        {
+          label: "文章6",
+          info: "A test for article6",
+          link: "http://localhost:3000/article/6",
+        },
+      ],
+      total: 12,
+    },
   };
 };
 
