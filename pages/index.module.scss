@@ -87,6 +87,34 @@
         line-height: 1.5;
       }
     }
+
+    .paginationArea {
+      width: 43.125rem;
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px 0;
+
+      :global {
+        .semi-page-item {
+          color: var(--primary-color);
+          opacity: 0.7;
+        }
+
+        .semi-page-item:hover {
+          background-color: var(--semi-page-hover-background-color);
+        }
+
+        .semi-page-item-active {
+          color: var(--semi-page-active-color);
+          background-color: var(--semi-page-active-background-color);
+        }
+
+        .semi-page-item-active:hover {
+          color: var(--semi-page-active-color);
+          background-color: var(--semi-page-active-background-color);
+        }
+      }
+    }
   }
 
   .withAnimation {

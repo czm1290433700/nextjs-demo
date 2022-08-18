@@ -7,6 +7,9 @@ html[data-theme="dark"] {
   --navbar-background-color: rgba(0, 0, 0, 0.5);
   --secondary-color: rgba(255, 255, 255, 0.5);
   --link-color: #34a8eb;
+  --semi-page-active-color: rgb(84, 169, 255);
+  --semi-page-active-background-color: rgba(84, 169, 255, 0.2);
+  --semi-page-hover-background-color: rgb(23, 23, 23);
   --navbar-icon: url("../public/logo_dark.png");
   --theme-icon: url("../public/theme_dark.png");
 }
@@ -18,6 +21,9 @@ html[data-theme="light"] {
   --navbar-background-color: rgba(255, 255, 255, 0.5);
   --secondary-color: #666666;
   --link-color: #0070f3;
+  --semi-page-active-color: #333333;
+  --semi-page-active-background-color: rgb(234, 245, 255);
+  --semi-page-hover-background-color: rgb(244, 245, 245);
   --navbar-icon: url("../public/logo_light.png");
   --theme-icon: url("../public/theme_light.png");
 }

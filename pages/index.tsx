@@ -3,7 +3,7 @@ import styles from "./index.module.scss";
 import cName from "classnames";
 import { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from "@/stores/theme";
-// import { Pagination } from "@douyinfe/semi-ui";
+import { Pagination } from "@douyinfe/semi-ui";
 
 interface IProps {
   title: string;
@@ -58,7 +58,9 @@ const Home: NextPage<IProps> = ({ title, description, articles }) => {
               </div>
             );
           })}
-          {/* <Pagination total={articles?.total} pageSize={6} /> */}
+          <div className={styles.paginationArea}>
+            <Pagination total={articles?.total} pageSize={6} />
+          </div>
         </div>
       </main>
     </div>
