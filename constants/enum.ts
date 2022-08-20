@@ -9,3 +9,8 @@ export enum Environment {
   mobile = "mobile",
   none = "none",
 }
+
+export enum Language {
+  ch = "ch",
+  en = "en",
+}

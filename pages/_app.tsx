@@ -6,6 +6,7 @@ import axios from "axios";
 import { getIsMobile, LOCALDOMAIN } from "@/utils";
 import { ThemeContextProvider } from "@/stores/theme";
 import { UserAgentProvider } from "@/stores/userAgent";
+import { LanguageContextProvider } from "@/stores/language";
 import "./global.scss";
 
 const MyApp = (data: AppProps & ILayoutProps & { isMobile: boolean }) => {
@@ -25,13 +26,15 @@ const MyApp = (data: AppProps & ILayoutProps & { isMobile: boolean }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ThemeContextProvider>
-        <UserAgentProvider>
-          <Layout navbarData={navbarData} footerData={footerData}>
-            <Component {...pageProps} />
-          </Layout>
-        </UserAgentProvider>
-      </ThemeContextProvider>
+      <LanguageContextProvider>
+        <ThemeContextProvider>
+          <UserAgentProvider>
+            <Layout navbarData={navbarData} footerData={footerData}>
+              <Component {...pageProps} />
+            </Layout>
+          </UserAgentProvider>
+        </ThemeContextProvider>
+      </LanguageContextProvider>
     </div>
   );
 };
