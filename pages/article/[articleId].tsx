@@ -1,7 +1,11 @@
+import { LOCALDOMAIN } from "@/utils";
+import axios from "axios";
 import type { NextPage } from "next";
 import styles from "./styles.module.scss";
 
-interface IProps {
+const showdown = require("showdown");
+
+export interface IArticleProps {
   title: string;
   author: string;
   description: string;
@@ -9,13 +13,14 @@ interface IProps {
   content: string;
 }
 
-const Article: NextPage<IProps> = ({
+const Article: NextPage<IArticleProps> = ({
   title,
   author,
   description,
   createTime,
   content,
 }) => {
+  const converter = new showdown.Converter();
   return (
     <div className={styles.article}>
       <h1 className={styles.title}>{title}</h1>
@@ -23,20 +28,22 @@ const Article: NextPage<IProps> = ({
         作者：{author} | 创建时间: {createTime}
       </div>
       <div className={styles.description}>{description}</div>
-      <div>{content}</div>
+      <div
+        dangerouslySetInnerHTML={{ __html: converter.makeHtml(content) }}
+        className={styles.content}
+      />
     </div>
   );
 };
 
-Article.getInitialProps = (context) => {
+Article.getInitialProps = async (context) => {
   const { articleId } = context.query;
-  return {
-    title: `文章${articleId}`,
-    author: "zhenmin",
-    description: `a description for 文章${articleId}`,
-    createTime: "2022/8/16",
-    content: "文章内容",
-  };
+  const { data } = await axios.get(`${LOCALDOMAIN}/api/articleInfo`, {
+    params: {
+      articleId,
+    },
+  });
+  return data;
 };
 
 export default Article;

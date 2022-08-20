@@ -51,11 +51,12 @@
 
     .grid {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-start;
+      justify-content: flex-start;
       flex-wrap: wrap;
-      max-width: 50rem;
+      max-width: 62.5rem;
       transition: 2s;
+      min-height: 36.25rem;
       .card {
         margin: 1rem;
         padding: 1.5rem;
@@ -67,6 +68,8 @@
         transition: color 0.15s ease, border-color 0.15s ease;
         max-width: 18.75rem;
         cursor: pointer;
+        width: 18.75rem;
+        height: 13.875rem;
       }
 
       .card:hover,
@@ -89,7 +92,7 @@
     }
 
     .paginationArea {
-      width: 43.125rem;
+      width: 62.5rem;
       display: flex;
       justify-content: flex-end;
       padding: 20px 0;
