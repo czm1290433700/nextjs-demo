@@ -1,3 +1,5 @@
+@import "./media.scss";
+
 @mixin initStatus {
   transform: translate3d(0, 2.5rem, 0);
   opacity: 0;
@@ -263,6 +265,50 @@
 
     100% {
       @include finalStatus;
+    }
+  }
+}
+
+@include media-ipad {
+  .container {
+    .main {
+      .grid {
+        width: 95%;
+        margin: auto;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@include media-mobile {
+  .container {
+    .main {
+      .title {
+        font-size: 1.75rem;
+        line-height: 2.4375rem;
+      }
+      .description {
+        font-size: 0.875rem;
+        line-height: 1.5rem;
+        margin: 2rem 0;
+      }
+      .grid {
+        width: 95%;
+        margin: auto;
+        justify-content: center;
+        .card {
+          height: 10rem;
+          h2 {
+            font-size: 1.125rem;
+            line-height: 1.5625rem;
+          }
+          p {
+            font-size: 0.75rem;
+            line-height: 1.625rem;
+          }
+        }
+      }
     }
   }
 }
