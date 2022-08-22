@@ -1,3 +1,5 @@
+@import "../media.scss";
+
 .article {
   color: var(--primary-color);
   width: 50rem;
@@ -42,6 +44,36 @@
 
     img {
       width: 50rem;
+    }
+  }
+}
+
+@include media-ipad {
+  .article {
+    width: 80%;
+    .content {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include media-mobile {
+  .article {
+    width: 80%;
+    .title {
+      font-size: 1.75rem;
+      line-height: 2.4375rem;
+    }
+    .content {
+      h2 {
+        font-size: 1.125rem;
+        line-height: 1.5625rem;
+      }
+      img {
+        width: 100%;
+      }
     }
   }
 }
