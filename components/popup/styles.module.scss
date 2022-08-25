@@ -1,0 +1,147 @@
+@import "../../pages/media.scss";
+
+.popup {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+
+  .mask {
+    width: inherit;
+    height: inherit;
+    position: fixed;
+    background-color: #000;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+
+  .popupContent {
+    position: relative;
+    border-radius: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--popup-content-background-color);
+    z-index: 20;
+    min-width: 25rem;
+    min-height: 25rem;
+
+    .closeBtn {
+      width: 2.125rem;
+      height: 2.125rem;
+      background-color: inherit;
+      background-image: var(--popup-close-icon);
+      background-position: center;
+      background-size: 1rem 1rem;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 1.1875rem;
+      right: 1.1875rem;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .closeBtn:hover {
+      background-color: var(--popup-close-hover-background-color);
+    }
+  }
+}
+
+.enter {
+  .mask {
+    animation: maskFadeIn 0.2s;
+  }
+
+  .popupContent {
+    animation: fadeIn 0.2s;
+  }
+}
+
+.leave {
+  .mask {
+    animation: maskFadeOut 0.2s;
+    opacity: 0;
+  }
+
+  .popupContent {
+    animation: fadeOut 0.2s;
+    transform: scale(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes maskFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes maskFadeOut {
+  0% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@include media-mobile {
+  .popup {
+    .popupContent {
+      min-width: 18.75rem;
+      min-height: 18.75rem;
+      .closeBtn {
+        width: 0.6875rem;
+        height: 0.6875rem;
+        top: 1.3125rem;
+        right: 0.875rem;
+      }
+    }
+  }
+}
+
+@include media-ipad {
+  .popup {
+    .popupContent {
+      .titleArea {
+        padding: 1.5rem 1.5625rem;
+      }
+    }
+  }
+}

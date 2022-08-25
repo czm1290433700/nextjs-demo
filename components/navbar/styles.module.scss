@@ -24,11 +24,16 @@
   .themeArea {
     display: flex;
     align-items: center;
+    color: var(--primary-color);
+    font-size: 0.875rem;
+
+    .popupText {
+      margin-right: 1rem;
+      cursor: pointer;
+    }
 
     .text {
-      color: var(--primary-color);
-      font-size: 0.875rem;
-      margin-right: 1.25rem;
+      margin-right: 1rem;
     }
 
     .themeIcon {
