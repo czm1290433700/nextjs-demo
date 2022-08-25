@@ -9,3 +9,8 @@ export const getIsMobile = (context: AppContext) => {
     (headers["user-agent"] || "").toLowerCase()
   );
 };
+
+export const getIsSupportWebp = (context: AppContext) => {
+  const { headers = {} } = context.ctx.req || {};
+  return headers.accept?.includes("image/webp");
+};

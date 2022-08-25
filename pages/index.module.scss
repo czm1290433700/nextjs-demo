@@ -23,6 +23,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    .header {
+      background-image: var(--home-background-icon);
+      background-size: 18.75rem 18.75rem;
+      background-repeat: no-repeat;
+      width: 18.75rem;
+      height: 18.75rem;
+    }
+
+    .headerWebp {
+      background-image: var(--home-background-icon-webp);
+    }
+
+    .top {
+      display: flex;
+    }
+
     .title a {
       color: var(--link-color);
       text-decoration: none;
