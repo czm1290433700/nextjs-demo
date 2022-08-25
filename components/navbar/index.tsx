@@ -14,7 +14,7 @@ export const NavBar: FC<INavBarProps> = ({}) => {
 
   return (
     <div className={styles.navBar}>
-      <a href="http://localhost:3000/">
+      <a href="http://127.0.0.1:3000/">
         <div className={styles.logoIcon}></div>
       </a>
       <div className={styles.themeArea}>
