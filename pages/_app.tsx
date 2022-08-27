@@ -38,6 +38,8 @@ const MyApp = (
             isMobile ? "移动端" : "pc端"
           })`}
         />
+        <meta name="viewport" content="user-scalable=no" />
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <LanguageContextProvider>
