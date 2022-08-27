@@ -3,30 +3,46 @@
   align-items: center;
   justify-content: space-between;
   background-color: var(--navbar-background-color);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(0.5rem);
   width: 100%;
-  height: 64px;
+  height: 4rem;
   position: sticky;
   top: 0;
   left: 0;
-  padding: 20px 32px;
+  padding: 1.25rem 2rem;
   z-index: 100;
   box-sizing: border-box;
 
-  .logo_icon {
-    width: 70px;
-    height: 20px;
+  .logoIcon {
+    width: 4.375rem;
+    height: 1.25rem;
     background-image: var(--navbar-icon);
-    background-size: 70px 20px;
+    background-size: 4.375rem 1.25rem;
     background-repeat: no-repeat;
   }
 
-  .theme_icon {
-    width: 20px;
-    height: 20px;
-    background-image: var(--theme-icon);
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-    cursor: pointer;
+  .themeArea {
+    display: flex;
+    align-items: center;
+    color: var(--primary-color);
+    font-size: 0.875rem;
+
+    .popupText {
+      margin-right: 1rem;
+      cursor: pointer;
+    }
+
+    .text {
+      margin-right: 1rem;
+    }
+
+    .themeIcon {
+      width: 1.25rem;
+      height: 1.25rem;
+      background-image: var(--theme-icon);
+      background-size: 1.25rem 1.25rem;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
   }
 }

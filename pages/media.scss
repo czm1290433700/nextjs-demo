@@ -1,0 +1,27 @@
+// 极小分辨率移动端设备
+@mixin media-mini-mobile {
+  @media screen and (max-width: 25.875rem) {
+    @content;
+  }
+}
+
+// 介于极小分辨率和正常分辨率之间的移动端设备
+@mixin media-between-mini-and-normal-mobile {
+  @media screen and (min-width: 25.876rem) and (max-width: 47.9375rem) {
+    @content;
+  }
+}
+
+// 移动端设备
+@mixin media-mobile {
+  @media screen and (max-width: 47.9375rem) {
+    @content;
+  }
+}
+
+// ipad
+@mixin media-ipad {
+  @media screen and (min-width: 47.9375rem) and (max-width: 75rem) {
+    @content;
+  }
+}
