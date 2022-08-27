@@ -58,15 +58,7 @@ a {
   box-sizing: border-box;
 }
 
-// 移动端遮罩层
 .forbidScroll {
-  height: 100vh;
-  overflow: hidden;
-}
-
-// pc端遮罩层
-.pcForbidScroll {
-  width: calc(100% - 1rem); // 滚动栏假区域
   height: 100vh;
   overflow: hidden;
 }

@@ -26,12 +26,8 @@ export const Popup = forwardRef<IPopupRef, IProps>(({ children }, ref) => {
   const [leave, setLeave] = useState(false);
   const { userAgent } = useContext(UserAgentContext);
 
-  const maskClass = useMemo(() => {
-    return userAgent === Environment.mobile ? "forbidScroll" : "pcForbidScroll";
-  }, [userAgent]);
-
   useEffect(() => {
-    document.body.className = visible ? maskClass : "";
+    document.body.className = visible ? "forbidScroll" : "";
     let timeout;
     if (visible) {
       setEnter(true);
