@@ -105,7 +105,33 @@ const Home: NextPage<IProps & IComponentProps> = ({
   );
 };
 
-Home.getInitialProps = async (context) => {
+// Home.getInitialProps = async (context) => {
+//   const { data: homeData } = await axios.get(`${LOCALDOMAIN}/api/home`);
+//   const { data: articleData } = await axios.post(
+//     `${LOCALDOMAIN}/api/articleIntro`,
+//     {
+//       pageNo: 1,
+//       pageSize: 6,
+//     }
+//   );
+
+//   return {
+//     title: homeData.title,
+//     description: homeData.description,
+//     articles: {
+//       list: articleData.list.map((item: IArticleIntro) => {
+//         return {
+//           label: item.label,
+//           info: item.info,
+//           link: `${LOCALDOMAIN}/article/${item.articleId}`,
+//         };
+//       }),
+//       total: articleData.total,
+//     },
+//   };
+// };
+
+export const getStaticProps = async (context) => {
   const { data: homeData } = await axios.get(`${LOCALDOMAIN}/api/home`);
   const { data: articleData } = await axios.post(
     `${LOCALDOMAIN}/api/articleIntro`,
@@ -116,17 +142,19 @@ Home.getInitialProps = async (context) => {
   );
 
   return {
-    title: homeData.title,
-    description: homeData.description,
-    articles: {
-      list: articleData.list.map((item: IArticleIntro) => {
-        return {
-          label: item.label,
-          info: item.info,
-          link: `${LOCALDOMAIN}/article/${item.articleId}`,
-        };
-      }),
-      total: articleData.total,
+    props: {
+      title: homeData.title,
+      description: homeData.description,
+      articles: {
+        list: articleData.list.map((item: IArticleIntro) => {
+          return {
+            label: item.label,
+            info: item.info,
+            link: `${LOCALDOMAIN}/article/${item.articleId}`,
+          };
+        }),
+        total: articleData.total,
+      },
     },
   };
 };

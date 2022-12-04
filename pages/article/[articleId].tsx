@@ -1,6 +1,6 @@
 import { LOCALDOMAIN } from "@/utils";
 import axios from "axios";
-import type { NextPage } from "next";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import styles from "./styles.module.scss";
 
 const showdown = require("showdown");
@@ -45,5 +45,37 @@ Article.getInitialProps = async (context) => {
   });
   return data;
 };
+
+// export const getServerSideProps = async (context) => {
+//   const { articleId } = context.query;
+//   const { data } = await axios.get(`${LOCALDOMAIN}/api/articleInfo`, {
+//     params: {
+//       articleId,
+//     },
+//   });
+//   return {
+//     props: data, // 需要拿props包裹
+//   };
+// };
+
+// ssg
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   return {
+//     paths: [{ params: { articleId: "1" } }],
+//     fallback: false,
+//   };
+// };
+
+// export const getStaticProps: GetStaticProps = async (context) => {
+//   const { articleId } = context.params as any;
+//   const { data } = await axios.get(`${LOCALDOMAIN}/api/articleInfo`, {
+//     params: {
+//       articleId,
+//     },
+//   });
+//   return {
+//     props: data,
+//   };
+// };
 
 export default Article;
