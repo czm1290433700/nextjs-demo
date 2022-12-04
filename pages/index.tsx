@@ -9,6 +9,8 @@ import { LOCALDOMAIN } from "@/utils";
 import { IArticleIntro } from "./api/articleIntro";
 import App from "next/app";
 import { IComponentProps } from "./_app";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface IProps {
   title: string;
@@ -32,6 +34,7 @@ const Home: NextPage<IProps & IComponentProps> = ({
   const [content, setContent] = useState(articles);
   const mainRef = useRef<HTMLDivElement>(null);
   const { theme } = useContext(ThemeContext);
+  const router = useRouter();
 
   useEffect(() => {
     mainRef.current?.classList.remove(styles.withAnimation);
@@ -58,20 +61,22 @@ const Home: NextPage<IProps & IComponentProps> = ({
         <div className={styles.grid}>
           {content?.list?.map((item, index) => {
             return (
-              <div
-                key={index}
-                className={styles.card}
-                onClick={(): void => {
-                  window.open(
-                    item.link,
-                    "blank",
-                    "noopener=yes,noreferrer=yes"
-                  );
-                }}
-              >
-                <h2>{item.label} &rarr;</h2>
-                <p>{item.info}</p>
-              </div>
+              <Link href={item.link} key={index}>
+                <div className={styles.card}>
+                  <h2>{item.label} &rarr;</h2>
+                  <p>{item.info}</p>
+                </div>
+              </Link>
+              // <div
+              //   className={styles.card}
+              //   key={index}
+              //   onClick={(): void => {
+              //     router.push(item.link);
+              //   }}
+              // >
+              //   <h2>{item.label} &rarr;</h2>
+              //   <p>{item.info}</p>
+              // </div>
             );
           })}
           <div className={styles.paginationArea}>
@@ -105,33 +110,7 @@ const Home: NextPage<IProps & IComponentProps> = ({
   );
 };
 
-// Home.getInitialProps = async (context) => {
-//   const { data: homeData } = await axios.get(`${LOCALDOMAIN}/api/home`);
-//   const { data: articleData } = await axios.post(
-//     `${LOCALDOMAIN}/api/articleIntro`,
-//     {
-//       pageNo: 1,
-//       pageSize: 6,
-//     }
-//   );
-
-//   return {
-//     title: homeData.title,
-//     description: homeData.description,
-//     articles: {
-//       list: articleData.list.map((item: IArticleIntro) => {
-//         return {
-//           label: item.label,
-//           info: item.info,
-//           link: `${LOCALDOMAIN}/article/${item.articleId}`,
-//         };
-//       }),
-//       total: articleData.total,
-//     },
-//   };
-// };
-
-export const getStaticProps = async (context) => {
+Home.getInitialProps = async (context) => {
   const { data: homeData } = await axios.get(`${LOCALDOMAIN}/api/home`);
   const { data: articleData } = await axios.post(
     `${LOCALDOMAIN}/api/articleIntro`,
@@ -142,21 +121,75 @@ export const getStaticProps = async (context) => {
   );
 
   return {
-    props: {
-      title: homeData.title,
-      description: homeData.description,
-      articles: {
-        list: articleData.list.map((item: IArticleIntro) => {
-          return {
-            label: item.label,
-            info: item.info,
-            link: `${LOCALDOMAIN}/article/${item.articleId}`,
-          };
-        }),
-        total: articleData.total,
-      },
+    title: homeData.title,
+    description: homeData.description,
+    articles: {
+      list: articleData.list.map((item: IArticleIntro) => {
+        return {
+          label: item.label,
+          info: item.info,
+          link: `${LOCALDOMAIN}/article/${item.articleId}`,
+        };
+      }),
+      total: articleData.total,
     },
   };
 };
+
+// export const getServerSideProps = async (context) => {
+//   const { data: homeData } = await axios.get(`${LOCALDOMAIN}/api/home`);
+//   const { data: articleData } = await axios.post(
+//     `${LOCALDOMAIN}/api/articleIntro`,
+//     {
+//       pageNo: 1,
+//       pageSize: 6,
+//     }
+//   );
+
+//   return {
+//     props: {
+//       title: homeData.title,
+//       description: homeData.description,
+//       articles: {
+//         list: articleData.list.map((item: IArticleIntro) => {
+//           return {
+//             label: item.label,
+//             info: item.info,
+//             link: `${LOCALDOMAIN}/article/${item.articleId}`,
+//           };
+//         }),
+//         total: articleData.total,
+//       },
+//     },
+//   };
+// };
+
+// export const getStaticProps = async (context) => {
+//   const { data: homeData } = await axios.get(`${LOCALDOMAIN}/api/home`);
+//   const { data: articleData } = await axios.post(
+//     `${LOCALDOMAIN}/api/articleIntro`,
+//     {
+//       pageNo: 1,
+//       pageSize: 6,
+//     }
+//   );
+
+//   return {
+//     props: {
+//       title: homeData.title,
+//       description: homeData.description,
+//       articles: {
+//         list: articleData.list.map((item: IArticleIntro) => {
+//           return {
+//             label: item.label,
+//             info: item.info,
+//             link: `${LOCALDOMAIN}/article/${item.articleId}`,
+//           };
+//         }),
+//         total: articleData.total,
+//       },
+//     },
+//   };
+// };
 
 export default Home;
