@@ -36,19 +36,18 @@ const Article: NextPage<IArticleProps> = ({
   );
 };
 
-// Article.getInitialProps = async (context) => {
-//   // debugger;
-//   const { articleId } = context.query;
-//   const { data } = await axios.get(`${LOCALDOMAIN}/api/articleInfo`, {
-//     params: {
-//       articleId,
-//     },
-//   });
-//   return data;
-// };
+Article.getInitialProps = async (context) => {
+  // debugger;
+  const { articleId } = context.query;
+  const { data } = await axios.get(`${LOCALDOMAIN}/api/articleInfo`, {
+    params: {
+      articleId,
+    },
+  });
+  return data;
+};
 
 // export const getServerSideProps = async (context) => {
-//   debugger;
 //   const { articleId } = context.query;
 //   const { data } = await axios.get(`${LOCALDOMAIN}/api/articleInfo`, {
 //     params: {
@@ -61,23 +60,23 @@ const Article: NextPage<IArticleProps> = ({
 // };
 
 // ssg;
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [{ params: { articleId: "1" } }],
-    fallback: false,
-  };
-};
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   return {
+//     paths: [{ params: { articleId: "1" } }],
+//     fallback: false,
+//   };
+// };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { articleId } = context.params as any;
-  const { data } = await axios.get(`${LOCALDOMAIN}/api/articleInfo`, {
-    params: {
-      articleId,
-    },
-  });
-  return {
-    props: data,
-  };
-};
+// export const getStaticProps: GetStaticProps = async (context) => {
+//   const { articleId } = context.params as any;
+//   const { data } = await axios.get(`${LOCALDOMAIN}/api/articleInfo`, {
+//     params: {
+//       articleId,
+//     },
+//   });
+//   return {
+//     props: data,
+//   };
+// };
 
 export default Article;
