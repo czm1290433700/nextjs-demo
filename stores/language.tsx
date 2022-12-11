@@ -1,5 +1,5 @@
-import React, { useState, useEffect, createContext } from "react";
-import { Language } from "@/constants/enum";
+import React, { useState, useEffect, createContext } from 'react';
+import { Language } from '@/constants/enum';
 
 interface ILanguageContextProps {
   language: Language;
@@ -10,23 +10,20 @@ interface IProps {
   children: JSX.Element;
 }
 
-export const LanguageContext = createContext<ILanguageContextProps>(
-  {} as ILanguageContextProps
-);
+export const LanguageContext = createContext<ILanguageContextProps>({} as ILanguageContextProps);
 
 export const LanguageContextProvider = ({ children }: IProps): JSX.Element => {
   const [language, setLanguage] = useState<Language>(Language.ch);
 
   useEffect(() => {
     const checkLanguage = (): void => {
-      const item =
-        (localStorage.getItem("language") as Language) || Language.ch;
+      const item = (localStorage.getItem('language') as Language) || Language.ch;
       setLanguage(item);
     };
     checkLanguage();
-    window.addEventListener("storage", checkLanguage);
+    window.addEventListener('storage', checkLanguage);
     return (): void => {
-      window.removeEventListener("storage", checkLanguage);
+      window.removeEventListener('storage', checkLanguage);
     };
   }, []);
 
@@ -34,9 +31,9 @@ export const LanguageContextProvider = ({ children }: IProps): JSX.Element => {
     <LanguageContext.Provider
       value={{
         language,
-        setLanguage: (currentLanguage) => {
+        setLanguage: (currentLanguage): void => {
           setLanguage(currentLanguage);
-          localStorage.setItem("language", currentLanguage);
+          localStorage.setItem('language', currentLanguage);
         },
       }}
     >

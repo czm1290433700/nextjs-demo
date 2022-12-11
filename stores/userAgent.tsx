@@ -1,5 +1,5 @@
-import React, { useState, useEffect, createContext } from "react";
-import { Environment } from "@/constants/enum";
+import React, { useState, useEffect, createContext } from 'react';
+import { Environment } from '@/constants/enum';
 
 interface IUserAgentContextProps {
   userAgent: Environment;
@@ -9,9 +9,7 @@ interface IProps {
   children: JSX.Element;
 }
 
-export const UserAgentContext = createContext<IUserAgentContextProps>(
-  {} as IUserAgentContextProps
-);
+export const UserAgentContext = createContext<IUserAgentContextProps>({} as IUserAgentContextProps);
 
 export const UserAgentProvider = ({ children }: IProps): JSX.Element => {
   const [userAgent, setUserAgent] = useState<Environment>(Environment.none); // 服务器渲染初始化渲染未必是预期效果，none缓冲切换视觉)
@@ -35,15 +33,11 @@ export const UserAgentProvider = ({ children }: IProps): JSX.Element => {
       }
     };
     checkUserAgent();
-    window.addEventListener("resize", checkUserAgent); // 监听屏幕宽度变化，及时适配当前页面样式
+    window.addEventListener('resize', checkUserAgent); // 监听屏幕宽度变化，及时适配当前页面样式
     return (): void => {
-      window.removeEventListener("resize", checkUserAgent);
+      window.removeEventListener('resize', checkUserAgent);
     };
-  }, [typeof document !== "undefined" && document.body.offsetWidth]);
+  }, [typeof document !== 'undefined' && document.body.offsetWidth]);
 
-  return (
-    <UserAgentContext.Provider value={{ userAgent }}>
-      {children}
-    </UserAgentContext.Provider>
-  );
+  return <UserAgentContext.Provider value={{ userAgent }}>{children}</UserAgentContext.Provider>;
 };
