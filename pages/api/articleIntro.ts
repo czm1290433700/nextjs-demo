@@ -1,6 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import axios from "axios";
-import { CMSDOMAIN } from "@/utils";
+import type { NextApiRequest, NextApiResponse } from 'next';
+import axios from 'axios';
+import { CMSDOMAIN } from '@/utils';
 
 export interface IArticleIntro {
   label: string;
@@ -13,10 +13,7 @@ interface IArticleIntroProps {
   total: number;
 }
 
-const getArticleIntroData = (
-  req: NextApiRequest,
-  res: NextApiResponse<IArticleIntroProps>
-) => {
+const getArticleIntroData = (req: NextApiRequest, res: NextApiResponse<IArticleIntroProps>): void => {
   const { pageNo, pageSize } = req.body;
   axios
     .get(`${CMSDOMAIN}/api/article-introductions`, {
@@ -25,7 +22,7 @@ const getArticleIntroData = (
         pageSize,
       },
     })
-    .then((result) => {
+    .then(result => {
       const { data, meta } = result.data || {};
 
       res.status(200).json({

@@ -1,7 +1,8 @@
-import { Html, Head, Main, NextScript } from "next/document";
-import Script from "next/script";
+import { Html, Head, Main, NextScript } from 'next/document';
+import Script from 'next/script';
+import React from 'react';
 
-export default function Document() {
+export default function Document(): JSX.Element {
   return (
     <Html>
       <Head />
